@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CarMate App</title>
+  <style>
+    body { font-family: Arial; background: #f5f5f5; }
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .btn {
+      background: green;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🚗 CarMate App</h2>
+
+<div id="cars"></div>
+
+<script>
+const cars = [
+  {name:"Tata Nexon EV", price:1500000, type:"Electric"},
+  {name:"Hyundai Creta", price:1250000, type:"Petrol"},
+  {name:"Tesla Model 3", price:4500000, type:"Electric"}
+];
+
+function showCars() {
+  let html = "";
+  cars.forEach((car, i) => {
+    html += `
+    <div class="card">
+      <h3>${car.name}</h3>
+      <p>₹${car.price} • ${car.type}</p>
+      <button class="btn" onclick="book(${i})">
+        Book Test Drive
+      </button>
+    </div>`;
+  });
+  document.getElementById("cars").innerHTML = html;
+}
+
+function book(i) {
+  let loc = prompt("Enter location:");
+  let date = prompt("Enter date:");
+  let time = prompt("Enter time:");
+
+  alert("Booked " + cars[i].name +
+  "\\nLocation: " + loc +
+  "\\nDate: " + date +
+  "\\nTime: " + time);
+}
+
+showCars();
+</script>
+
+</body>
+</html>
